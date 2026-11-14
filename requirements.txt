@@ -1,0 +1,3 @@
+rich>=13.0
+anthropic>=0.40
+pytest>=8.0

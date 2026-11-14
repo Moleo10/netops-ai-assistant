@@ -1,0 +1,13 @@
+[project]
+name = "netops-ai-assistant"
+version = "1.0.0"
+description = "AI-assisted troubleshooting for Cisco networks: parse show output, detect issues, explain root causes with Claude"
+requires-python = ">=3.10"
+dependencies = ["rich>=13.0", "anthropic>=0.40"]
+
+[project.scripts]
+netops = "netops.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

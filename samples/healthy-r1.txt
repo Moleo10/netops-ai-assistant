@@ -1,0 +1,23 @@
+HQ-R1#show interfaces
+GigabitEthernet0/0 is up, line protocol is up
+  Description: ISP-UPLINK
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 255/255, txload 18/255, rxload 40/255
+  Full-duplex, 1000Mb/s, media type is RJ45
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 output errors, 0 collisions, 0 interface resets
+GigabitEthernet0/1 is up, line protocol is up
+  Description: TO-CORE
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 255/255, txload 9/255, rxload 7/255
+  Full-duplex, 1000Mb/s, media type is RJ45
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 output errors, 0 collisions, 0 interface resets
+
+HQ-R1#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.255.0.2        1   FULL/BDR        00:00:33    10.0.12.2       GigabitEthernet0/1
+
+HQ-R1#show processes cpu sorted
+CPU utilization for five seconds: 4%/0%; one minute: 5%; five minutes: 5%

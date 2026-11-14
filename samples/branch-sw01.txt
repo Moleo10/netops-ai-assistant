@@ -1,0 +1,76 @@
+BRANCH-SW01#show interfaces
+GigabitEthernet1/0/1 is up, line protocol is up (connected)
+  Hardware is Gigabit Ethernet, address is 7018.a7c1.0101 (bia 7018.a7c1.0101)
+  Description: FINANCE-PC-01
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Half-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  5 minute input rate 12000 bits/sec, 15 packets/sec
+  5 minute output rate 48000 bits/sec, 30 packets/sec
+     1532881 packets input, 201348812 bytes, 0 no buffer
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     2088113 packets output, 911242311 bytes, 0 underruns
+     0 output errors, 4211 collisions, 0 interface resets
+     3398 late collision, 0 deferred
+GigabitEthernet1/0/2 is up, line protocol is up (connected)
+  Hardware is Gigabit Ethernet, address is 7018.a7c1.0102 (bia 7018.a7c1.0102)
+  Description: PRINTER-2F
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 251/255, txload 1/255, rxload 2/255
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  5 minute input rate 88000 bits/sec, 40 packets/sec
+  5 minute output rate 91000 bits/sec, 44 packets/sec
+     8821930 packets input, 1923811230 bytes, 0 no buffer
+     48211 input errors, 47902 CRC, 309 frame, 0 overrun, 0 ignored
+     9120311 packets output, 2013991012 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 late collision, 0 deferred
+GigabitEthernet1/0/24 is up, line protocol is up (connected)
+  Hardware is Gigabit Ethernet, address is 7018.a7c1.0118 (bia 7018.a7c1.0118)
+  Description: UPLINK-TO-CORE
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 255/255, txload 231/255, rxload 120/255
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  5 minute input rate 471000000 bits/sec, 51022 packets/sec
+  5 minute output rate 907000000 bits/sec, 88213 packets/sec
+     992018331 packets input, 811293819201 bytes, 0 no buffer
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     1201938221 packets output, 991203818221 bytes, 0 underruns
+     12 output errors, 0 collisions, 0 interface resets
+     0 late collision, 0 deferred
+     88123 output drops
+GigabitEthernet1/0/10 is down, line protocol is down (notconnect)
+  Hardware is Gigabit Ethernet, address is 7018.a7c1.010a (bia 7018.a7c1.010a)
+  Description: MEETING-ROOM-AP
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+  Auto-duplex, Auto-speed, media type is 10/100/1000BaseTX
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 output errors, 0 collisions, 0 interface resets
+
+BRANCH-SW01#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.255.0.1        1   FULL/DR         00:00:35    10.1.1.1        Vlan100
+10.255.0.7        1   EXSTART/BDR     00:00:31    10.1.1.7        Vlan100
+10.255.0.9        0   INIT/  -        00:00:38    10.1.2.9        Vlan200
+
+BRANCH-SW01#show processes cpu sorted
+CPU utilization for five seconds: 91%/12%; one minute: 87%; five minutes: 79%
+ PID Runtime(ms)     Invoked      uSecs   5Sec   1Min   5Min TTY Process
+ 120    93812374   122019381        768 41.03% 39.88% 35.20%   0 IP Input
+  88    51203811    81203918        630 18.22% 17.91% 16.03%   0 ARP Input
+ 211    11829301    18203911        649  6.11%  5.88%  5.01%   0 Spanning Tree
+
+BRANCH-SW01#show logging
+*Nov 14 09:12:03.411: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to down
+*Nov 14 09:12:05.902: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to up
+*Nov 14 09:31:44.120: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to down
+*Nov 14 09:31:46.733: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to up
+*Nov 14 10:02:10.004: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to down
+*Nov 14 10:02:12.551: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/2, changed state to up
+*Nov 14 10:15:00.118: %OSPF-5-ADJCHG: Process 1, Nbr 10.255.0.7 on Vlan100 from FULL to EXSTART, Neighbor Down: Too many retransmissions
+*Nov 14 10:15:40.812: %OSPF-4-ERRRCV: Received invalid packet: mismatched MTU from 10.1.1.7, Vlan100
+*Nov 14 10:22:31.077: %SW_MATM-4-MACFLAP_NOTIF: Host 0050.56a1.22b3 in vlan 10 is flapping between port Gi1/0/5 and port Gi1/0/6
+*Nov 14 10:22:49.312: %SW_MATM-4-MACFLAP_NOTIF: Host 0050.56a1.22b3 in vlan 10 is flapping between port Gi1/0/5 and port Gi1/0/6
+*Nov 14 10:40:02.551: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.9.9.9)
+*Nov 14 11:02:17.920: %CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on GigabitEthernet1/0/1 (not half duplex), with FIN-SW02 GigabitEthernet0/3 (full duplex).
